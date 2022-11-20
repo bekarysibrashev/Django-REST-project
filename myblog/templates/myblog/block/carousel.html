@@ -1,0 +1,40 @@
+{% load static %}
+
+<div id="carouselExampleCaptions" class="carousel slide mb-5" data-ride="carousel" style="width: 100%; margin: auto;" >
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-interval="3000">
+        <img src={% static "img/carusel.jpg" %} class="d-block w-100"  width="100px" height="300px" alt="...">
+        <div class="carousel-caption d-none d-md-block" style="background-color:#1d2238a4">
+          <h5>Sometimes life can be difficult</h5>
+          <p>And you do not know how to handle with problems</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-interval="3000">
+        <img src={% static "img/post.jpg" %} class="d-block w-100" width="100px" height="300px" alt="...">
+        <div class="carousel-caption d-none d-md-block" style="background-color:#1d2238a4">
+          <h5>Do not give up</h5>
+          <p>You have problems, but you still can be happy whatever happens</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-interval="3000">
+        <img src={% static "img/second.jpg" %} class="d-block w-100"   width="100px" height="300px" alt="...">
+        <div class="carousel-caption d-none d-md-block" style="background-color:#1d2238a4">
+          <h5>Keep moving</h5>
+          <p>The road will be mastered by the walking</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div> 

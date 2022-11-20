@@ -1,0 +1,137 @@
+{% load static %}
+<div class="container px-0 pt-4 my-3" style="background-color: rgb(255, 255, 255)">
+  <div class="container">
+  <h2 class="mb-4" style="font-family:Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif">Все посты</h2>
+    <div class="row">
+      <div class="col-4">
+        <div class="card">
+          <img src={% static "img/post.jpg" %} alt="" class="card-img-top">
+          <div class="card-body">
+            <h4 class="card-title">Какой то интересный текст</h4>
+            <div class="card-text">
+              <p>Что то интересно. Текст который будет здесь стоять будет таким же интересным. Что то про что то </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <img src={% static "img/post.jpg" %} alt="" class="card-img-top">
+          <div class="card-body">
+            <h4 class="card-title">Какой то интересный текст</h4>
+            <div class="card-text">
+              <p>Что то интересно. Текст который будет здесь стоять будет таким же интересным. Что то про что то </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <img src={% static "img/post.jpg" %} alt="" class="card-img-top">
+          <div class="card-body">
+            <h4 class="card-title">Какой то интересный текст</h4>
+            <div class="card-text">
+              <p>Что то интересно. Текст который будет здесь стоять будет таким же интересным. Что то про что то </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <img src={% static "img/post.jpg" %} alt="" class="card-img-top">
+          <div class="card-body">
+            <h4 class="card-title">Какой то интересный текст</h4>
+            <div class="card-text">
+              <p>Что то интересно. Текст который будет здесь стоять будет таким же интересным. Что то про что то </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <img src={% static "img/post.jpg" %} alt="" class="card-img-top">
+          <div class="card-body">
+            <h4 class="card-title">Какой то интересный текст</h4>
+            <div class="card-text">
+              <p>Что то интересно. Текст который будет здесь стоять будет таким же интересным. Что то про что то </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <img src={% static "img/post.jpg" %} alt="" class="card-img-top">
+          <div class="card-body">
+            <h4 class="card-title">Какой то интересный текст</h4>
+            <div class="card-text">
+              <p>Что то интересно. Текст который будет здесь стоять будет таким же интересным. Что то про что то </p>
+            </div>
+          </div>
+              
+        </div>
+      </div>
+  </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="container px-0 pt-4 my-3" style="background-color: rgb(255, 255, 255)">
+  <div class="container">
+  <h2 class="mb-4" style="font-family:Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif">Все посты</h2>
+      <div class="row">
+          {% for post in posts %}
+          <div class="col-4">
+              <div class="card">
+                  <div class="card-header">
+                  {{ post.tag }}    
+                  </div>
+                  <div class="card-body">
+                      <h4 class="card-title">{{ post.h1 }}</h4>
+                      <div class="card-text">
+                          <h6>{{ post.description|safe }}</h6>
+                          {{ post.content }}</p>
+                          <a href="#">{{ post.url }}</a>
+                          <h1 class="blockquote-footer">{{ post.author }} {{ post.created_at }}</h1>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <h1 class="my-3">Последние записи блога</h1>
+  {% for post in posts %}
+  <h2>{{ post.h1 }}</h2>
+  <p>{{ post.url }}</p>
+  {{ post.description|safe }}
+  <p>{{ post.image }}</p>
+  <p>{{ post.created_at }}</p>
+  <p>{{ post.author }}</p>
+  {% endfor %}
+<!-- ЗДЕСЬ КАРТОЧКИ ТОВАРОВ. ЗАКОММЕНТИРУЙТЕ ИХ ПОКА -->
+</div>
+{% endblock %}
