@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.views import View
 from .models import Post
 from django.core.paginator import Paginator
-from .forms import SigUpForm, SignInForm
+from .forms import SigUpForm, SignInForm, PostCreateForm
 from django.contrib.auth import login,authenticate, logout
 from django.http import HttpResponseRedirect 
 
@@ -77,14 +77,22 @@ class SignInView(View):
         return render(request, 'myblog/signin.html', context={'form':form})
 
     
-# class LogOutView(View):
-#     def get(self, request, *args, **kwargs):
-#         return render(request, 'myblog/home.html')
+class LogOutView(View):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return HttpResponseRedirect('/')
     
-#     def post(self, request, *args, **kwargs):
-#         logout(request)
-#         return HttpResponseRedirect('myblog/signin.html') 
 
-def logout_view(request):
-    logout(request)
-    return HttpResponseRedirect('/')
+class PostCreateView(View):
+    def get(self, request):
+        form = PostCreateForm()
+        
+        return render(request, 'myblog/create_post.html', context={'form':form})
+    
+    def post(self, request):
+        form = PostCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+        else:
+            return(HttpResponse("Заполнена не корректно"))
+        return HttpResponseRedirect('/')

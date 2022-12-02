@@ -1,8 +1,10 @@
 {% extends './base.html' %}
 {% block title %}Авторизация{% endblock %}
 
-{% block cards %}
 
+
+{% block carousel %}
+<div class="container w-25 ">
     <div class="text-center">
         {% if form.errors %}
             {% for field in form %}
@@ -19,14 +21,26 @@
             {% endfor %}
         {% endif %}
         <form class="form-signin" method="post" action="{% url 'signin' %}">
+
             {% csrf_token %}
+
             <h1 class="h3 mb-3 mt-3 font-weight-normal">Пожалуйста укажите логин и пароль</h1>
+            <hr>
+            <div class="d-flex justify-content-start my-2">
+            <label>Логин</label>
             <label for="inputUsername" class="sr-only">Имя пользователя</label>
+            </div>
             {{ form.username }}
+
+            <div class="d-flex justify-content-start my-2">
+            <label>Пароль</label>
             <label for="inputPassword" class="sr-only">Пароль</label>
+            </div>
             {{ form.password }}
-            <button class="btn mt-2 btn-lg btn-primary btn-block" type="submit">Войти</button>
+
+            <button class="btn mt-2 btn-lg btn-primary btn-block mt-5" type="submit">Войти</button>
         </form>
     </div>
+</div>
 {% endblock %}
 

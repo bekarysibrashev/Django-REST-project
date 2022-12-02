@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import MainView, PostDetailView, SignUpView, SignInView
+from .views import MainView, PostDetailView, SignUpView, SignInView, LogOutView, PostCreateView
 from . import views
 
 urlpatterns = [
@@ -7,7 +7,9 @@ urlpatterns = [
     path('blog/<slug>', PostDetailView.as_view(), name='post_detail'),
     path('signup/', SignUpView.as_view(), name='signup'),
     path('signin/', SignInView.as_view(), name='signin'),
-    path('logout/', views.logout_view, name='logout')
+    path('logout/', LogOutView.as_view(), name='logout'),
+    path('create/', PostCreateView.as_view(), name='create')
+   
 ]
 
 

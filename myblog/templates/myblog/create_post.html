@@ -1,0 +1,18 @@
+{% extends './base.html' %}
+
+{% block cards %}
+
+<form action="{% url 'create' %}" method="post">
+    {% csrf_token %}
+    
+  
+    {{ form  }}
+<span>{{ error }}</span>    
+   
+
+    <button type="submit">SEND</button>
+</form>
+
+
+
+{% endblock %}>

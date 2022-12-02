@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-
-
+from .models import Post
+from django.forms import ModelForm
+from django.utils import timezone
 
 class SignInForm(forms.Form):
     username = forms.CharField(
@@ -67,3 +68,12 @@ class SigUpForm(forms.Form):
         user.save()
         auth = authenticate(**self.cleaned_data)
         return auth
+
+
+
+class PostCreateForm(ModelForm):
+    class Meta:
+       model = Post
+       fields = ['h1', 'title', 'url', 'description', 'content', 'tag', 'image' ]
+
+    
