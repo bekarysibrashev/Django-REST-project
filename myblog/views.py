@@ -1,12 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404, HttpResponse
 from django.views import View
-from .models import Post
+from .models import Post, Test
 from django.core.paginator import Paginator
-from .forms import SigUpForm, SignInForm, PostCreateForm
+from .forms import SigUpForm, SignInForm, FeedbackForm, PostCreateForm
 from django.contrib.auth import login,authenticate, logout
 from django.http import HttpResponseRedirect 
-
+from django.core.mail import send_mail, BadHeaderError
 
 class MainView(View):
     def get(self, request, *args, **kwargs):
@@ -83,16 +83,52 @@ class LogOutView(View):
         return HttpResponseRedirect('/')
     
 
+
+
+
+class FeedbackView(View):
+    def get(self, request):
+        form = FeedbackForm()
+        return render(request, 'myblog/contactus.html', context={
+            'form' : form,
+            'title' : 'Написать мне'
+        })
+
+    def post(self, request):
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            from_email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+
+            try:
+                send_mail(f'From {name} | {subject}', message, from_email, ['beka.ibrashev@gmail.com'])
+            except BadHeaderError:
+                return HttpResponse('Невалидный заголовок')
+            
+            return HttpResponseRedirect('success')
+        return render(request, 'myblog/contactus.html', context={'  form':form})
+
+        
+
+class SuccessView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'myblog/success.html', context={
+            'title': 'Спасибо'
+        })
+
+    
 class PostCreateView(View):
     def get(self, request):
         form = PostCreateForm()
-        
         return render(request, 'myblog/create_post.html', context={'form':form})
-    
+
     def post(self, request):
-        form = PostCreateForm(request.POST)
+        form = PostCreateForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            
         else:
-            return(HttpResponse("Заполнена не корректно"))
-        return HttpResponseRedirect('/')
+            return HttpResponse('Не правильно')
+        return render(request, 'myblog/success.html')

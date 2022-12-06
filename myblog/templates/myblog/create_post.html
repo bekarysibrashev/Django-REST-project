@@ -2,14 +2,21 @@
 
 {% block cards %}
 
-<form action="{% url 'create' %}" method="post">
+<form method="post"  enctype="multipart/form-data">
     {% csrf_token %}
-    
-  
-    {{ form  }}
-<span>{{ error }}</span>    
-   
 
+    {{ form.title }}<br>
+    {{ form.h1}}<br>
+    {{ form.description}}
+    {{ form.content}}
+    {{ form.tag }}
+    {{ form.url }}
+    {{ form.image }}
+
+
+
+   
+   
     <button type="submit">SEND</button>
 </form>
 
