@@ -84,6 +84,12 @@ class LogOutView(View):
     
 
 
+class SearchView(View):
+    def get(sekf, request):
+        return render(request, 'myblog/search.html', context={
+            'title': "Поиск"
+        })
+
 
 
 class FeedbackView(View):
@@ -125,7 +131,7 @@ class PostCreateView(View):
         return render(request, 'myblog/create_post.html', context={'form':form})
 
     def post(self, request):
-        form = PostCreateForm(request.POST, request.FILES)
+        form = PostCreateForm(request.POST, request.FILES   )
         if form.is_valid():
             form.save()
             

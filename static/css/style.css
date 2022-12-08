@@ -1,5 +1,6 @@
-
-
+body{
+	height: 100%;
+}
 
 h5 ,h6{
     color: rgb(166, 200, 217);
@@ -11,10 +12,49 @@ h4{
 }
 
 footer{
-	background-color:black;
-	height: auto;
-	width: 100%;
-	margin: 0 auto;
-	padding-top: 20px;
+	background-color:rgb(16, 26, 59);
+	margin-top: auto;
+}
+
+.forms{
+	width: 500px;
+	margin-left: 500px;
+	display: flex;
+	flex-direction: column;
+}
+
+.mainpagecards{
+	min-height: 300px;
+}
+
+.descrip{
+	width: 400px;
 	
+}
+.card{
+	height: 3003px;
+}
+.form-img{
+	margin-bottom: 20px;
+}
+#text{
+	width:400px
+}
+
+#signupbtn{
+	margin-bottom: 100px;
+}
+.myform{
+	margin-left: 300px;
+}
+
+.heading{
+	padding-top: 100px;
+}
+
+.page{
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
 }

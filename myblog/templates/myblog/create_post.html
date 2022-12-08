@@ -1,25 +1,31 @@
 {% extends './base.html' %}
-
+{% load static %}
 {% block cards %}
-
+{% load widget_tweaks %}
+<div class="container">
 <form method="post"  enctype="multipart/form-data">
-    {% csrf_token %}
-
-    {{ form.title }}<br>
-    {{ form.h1}}<br>
-    {{ form.description}}
-    {{ form.content}}
-    {{ form.tag }}
-    {{ form.url }}
-    {{ form.image }}
-
-
-
-   
-   
-    <button type="submit">SEND</button>
+    <div class="heading">
+        <h3>Добавьте новую запись</h3>
+    </div>
+    <div class="">
+        {% csrf_token %}
+        <label>Название поста</label>
+        {{ form.title|add_class:"form-control" }}<br>
+        <label>Заголовок</label>
+        {{ form.h1|add_class:"form-control" }}<br>
+        <label>Опиание</label>
+        {{ form.description|add_class:"form-control" }}<br>
+        <label>Контент</label>
+        {{ form.content|add_class:"form-control"|attr:"cols:160" }}<br>
+        <label>Тэги</label>
+        {{ form.tag|add_class:"form-control"  }}<br>
+        <label>URL адрес</label>
+        {{ form.url|add_class:"form-control"  }}<br>
+     
+        {{ form.image|add_class:"form-img"  }}<br>
+        <button class="btn btn-success" type="submit">Add post</button>
+    </div> 
 </form>
-
-
+</div>
 
 {% endblock %}>

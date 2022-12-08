@@ -77,7 +77,7 @@ class SigUpForm(forms.Form):
 
 
 
-class PostCreateForm(ModelForm):
+class PostCreateForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['h1','title','url', 'description', 'content', 'tag', 'image']
@@ -92,10 +92,7 @@ class PostCreateForm(ModelForm):
 #     То есть 3) Проверить УРЛ поля. '''
 
     widgets = {
-        'title': TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'title'
-        }),
+        'title': TextInput(attrs={'class': 'myform'}),
         'h1': TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'h1'

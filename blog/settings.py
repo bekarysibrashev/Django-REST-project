@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'myblog',
     'ckeditor',
     'ckeditor_uploader',
+    'widget_tweaks',
 
 ]
 
@@ -177,5 +178,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'Your email'
-EMAIL_HOST_PASSWORD = 'Generated password'
+EMAIL_HOST_USER = 'beka.ibrashev@gmail.com'
+EMAIL_HOST_PASSWORD = 'ваш пароль'
